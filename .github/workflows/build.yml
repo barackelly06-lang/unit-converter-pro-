@@ -33,6 +33,11 @@ jobs:
     
     - name: Set up Android SDK
       uses: android-actions/setup-android@v3
+      with:
+        api-level: 33
+        build-tools: 37.0.0
+        cmdline-tools-version: 16.0
+        accept-android-sdk-licenses: true
     
     - name: Accept Android SDK Licenses & Install Build Tools
       run: |
