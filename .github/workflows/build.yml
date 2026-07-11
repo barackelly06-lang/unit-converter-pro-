@@ -3,17 +3,13 @@ on: [push, workflow_dispatch]
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Build with Buildozer
-        uses: buildozer/action@v1
-        with:
-          command: buildozer android debug
-          
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: unit-converter-apk
-          path: bin/*.apk
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: sudo apt update && sudo apt install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses-dev cmake libffi-dev libssl-dev
+      - run: pip install buildozer==1.5.0 cython==3.0.8
+      - run: buildozer -v android debug
+      - uses: actions/upload-artifact@v4
+        with: {name: unit-converter-apk, path: bin/*.apk}
