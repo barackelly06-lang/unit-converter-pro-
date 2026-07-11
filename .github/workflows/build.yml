@@ -44,8 +44,10 @@ jobs:
     
     - name: Accept Licenses & Install SDK
       run: |
-        yes | sdkmanager --licenses
-        yes | sdkmanager "build-tools;37.0.0" "platform-tools" "platforms;android-33"
+        yes | sdkmanager --sdk_root=$ANDROID_SDK_ROOT --licenses
+        yes | sdkmanager --sdk_root=$ANDROID_SDK_ROOT "build-tools;37.0.0" "platform-tools" "platforms;android-33"
+      env:
+        ANDROID_SDK_ROOT: ${{ env.ANDROID_SDK_ROOT }}
     
     - name: Build APK
       run: buildozer android debug
@@ -55,5 +57,5 @@ jobs:
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
-        name: unitconverter-apk
+        name: unitconverter-pro-apk
         path: bin/*.apk
