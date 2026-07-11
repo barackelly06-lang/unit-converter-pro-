@@ -1,15 +1,20 @@
 [app]
-title = Unit Converter Pro
-package.name = unitconverterpro
+title = Unit Converter
+package.name = unitconverter
 package.domain = org.test
 source.dir =.
 source.include_exts = py,png,jpg,kv,atlas
-version = 1.0
-requirements = python3,kivy,kivymd
+version = 0.1
+requirements = python3,kivy
 orientation = portrait
 fullscreen = 0
-android.arch = arm64-v8a
+android.api = 33
+android.minapi = 21
+android.sdk_path =
+android.ndk_path =
+android.archs = arm64-v8a
 android.permissions = INTERNET
+android.logcat_filters = *:S python:D
 
 [buildozer]
 log_level = 2
