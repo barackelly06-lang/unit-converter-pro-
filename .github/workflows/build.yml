@@ -17,7 +17,6 @@ jobs:
       - run: flutter --version
       - run: flutter clean
       - run: flutter pub get
-      - run: flutter create .  # HII NDIO INAJENGA ANDROID V2 UPYS
       - run: flutter build apk --release --no-tree-shake-icons
 
       - uses: actions/upload-artifact@v4
