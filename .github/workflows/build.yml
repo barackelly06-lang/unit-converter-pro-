@@ -19,6 +19,9 @@ jobs:
       - run: flutter clean
       
       - run: flutter pub get
+      - run: flutter clean
+- run: flutter pub get
+- run: flutter create . 
       
       - run: flutter build apk --release --no-tree-shake-icons
       
